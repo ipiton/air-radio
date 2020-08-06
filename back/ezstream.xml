@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  EXAMPLE: A valid configuration that contains every configuration option
-
-  NB: /ezstream/metadata/program is commented out so that this configuration
-      can work without scripting.
-  -->
-
 <!-- Ezstream configuration root element -->
 <ezstream>
-
   <!--
     Server configuration
     -->
@@ -17,17 +9,9 @@
     <server>
       <!-- Identifying name (default: "default") -->
       <name>Air Radio Server</name>
-
-      <!--
-        Transport protocol:
-        HTTP (default), HTTPS (implies <tls>required</tls>), ICY, RoarAudio
-        -->
       <protocol>HTTP</protocol>
-      <!-- Server address -->
       <hostname>srv-cast</hostname>
-      <!-- Server port (default: 8000) -->
       <port>80</port>
-
       <!-- Login user (default: "source") -->
       <user>source</user>
       <!-- Login password (check file permissions, or everyone can see this) -->
@@ -41,29 +25,15 @@
     -->
   <streams>
     <stream>
-      <!--
-        Identifying name (default: "default")
-
-        NB: Only the "default" stream is supported at this point.
-        -->
-      <!-- <name>default</name> -->
-
+      <name>default</name>
       <!-- Mount point on server -->
       <mountpoint>/air.misc</mountpoint>
-
       <!-- Name of the intake entry to use (default: "default") -->
       <intake>Misc</intake>
-
       <!-- Name of the server entry to use (default: "default") -->
       <server>Air Radio Server</server>
-
-      <!--
-        Setting to allow stream to be listed in public YP directory
-        (default: no)
-        -->
       <public>No</public>
 
-      <!-- Stream format: Ogg, MP3, WebM, Matroska -->
       <format>MP3</format>
 
       <stream_name>Air Radio Misc</stream_name>
@@ -75,30 +45,18 @@
       <stream_samplerate>44100</stream_samplerate>
       <stream_channels>2</stream_channels>
     </stream>
-  </streams>
+     </streams>
 
   <!--
     Intake configuration
     -->
   <intakes>
     <intake>
-      <!-- Identifying name (default: "default") -->
       <name>Misc</name>
-
-      <!--
-        Media type: autodetect, file, playlist, program, stdin
-       (default: autodetect)
-        -->
       <type>playlist</type>
-
-      <!-- Input file, program name, or "stdin" keyword (deprecated) -->
       <filename>/music/playlist.misc</filename>
-
-      <!-- Setting to shuffle playlists -->
       <shuffle>Yes</shuffle>
-
-      <!-- Setting whether to stream intake indefinitely or only once -->
-      <stream_once>Yes</stream_once>
+      <stream_once>No</stream_once>
     </intake>
   </intakes>
 

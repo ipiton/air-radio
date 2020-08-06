@@ -10,12 +10,29 @@ services:
     networks:
       - icecast
 
-  streamer:
+  streamer-rus:
     image: ipiton/ezstream
     build: ./back
-    container_name: streamer
+    container_name: streamer-rus
     volumes:
       - /mnt/c/music:/music
+    environment:
+      - PLAYLIST=/music/playlist.rus
+      - MOUNTPOINT=/air.rus
+    depends_on:
+      - srv-cast
+    networks:
+      - icecast
+
+  streamer-misc:
+    image: ipiton/ezstream
+    build: ./back
+    container_name: streamer-misc
+    volumes:
+      - /mnt/c/music:/music
+    environment:
+      - PLAYLIST=/music/playlist.misc
+      - MOUNTPOINT=/air.misc
     depends_on:
       - srv-cast
     networks:
