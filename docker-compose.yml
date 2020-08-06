@@ -1,0 +1,27 @@
+version: "2.4"
+
+services:
+  srv-cast:
+    image: ipiton/icecast
+    build: ./front
+    container_name: srv-cast
+    ports:
+      - 80:80
+    networks:
+      - icecast
+
+  streamer:
+    image: ipiton/ezstream
+    build: ./back
+    container_name: streamer
+    volumes:
+      - /mnt/c/music:/music
+    depends_on:
+      - srv-cast
+    networks:
+      - icecast
+
+
+networks:
+  icecast:
+    driver: bridge
