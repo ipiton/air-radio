@@ -1,4 +1,4 @@
-version: "2.4"
+version: "3"
 
 services:
   srv-cast:
@@ -19,6 +19,10 @@ services:
     environment:
       - PLAYLIST=/music/playlist.rus
       - MOUNTPOINT=/air.rus
+      - STREAM_NAME=Air Radio RUS
+      - STREAM_URL=http://srv-cast.air.loc/air.rus
+      - STREAM_GENRE=Russian Rock
+      - STREAM_DESC=Air Radio Russian Stream
     depends_on:
       - srv-cast
     networks:
@@ -33,6 +37,10 @@ services:
     environment:
       - PLAYLIST=/music/playlist.misc
       - MOUNTPOINT=/air.misc
+      - STREAM_NAME=Air Radio Misc
+      - STREAM_URL=http://srv-cast.air.loc/air.misc
+      - STREAM_GENRE=Misc
+      - STREAM_DESC=Air Radio Misc Stream
     depends_on:
       - srv-cast
     networks:

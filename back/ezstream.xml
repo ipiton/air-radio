@@ -16,7 +16,7 @@
       <user>source</user>
       <!-- Login password (check file permissions, or everyone can see this) -->
       <password>source-pass</password>
-      <reconnect_attempts>20</reconnect_attempts>
+      <reconnect_attempts>30</reconnect_attempts>
     </server>
   </servers>
 

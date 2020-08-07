@@ -15,4 +15,4 @@ RUN chmod +x /entrypoint.sh
 RUN chmod 644 /ezstream/ezstream.xml
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ezstream -c /ezstream/ezstream.xml
+CMD ezstream -v -c /ezstream/ezstream.xml
