@@ -23,7 +23,7 @@
         <admin-password>adminADMIN</admin-password>
     </authentication>
 
-    <hostname>srv-cast</hostname>
+    <hostname>cast</hostname>
 
     <!-- You may have multiple <listener> elements -->
     <listen-socket>

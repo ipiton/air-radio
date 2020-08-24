@@ -10,7 +10,7 @@
       <!-- Identifying name (default: "default") -->
       <name>Air Radio Server</name>
       <protocol>HTTP</protocol>
-      <hostname>srv-cast</hostname>
+      <hostname>cast</hostname>
       <port>80</port>
       <!-- Login user (default: "source") -->
       <user>source</user>

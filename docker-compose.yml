@@ -1,14 +1,13 @@
 version: "3"
 
 services:
-  srv-cast:
+  cast:
     image: ipiton/icecast
     build: ./front
-    container_name: srv-cast
+    container_name: cast
     ports:
       - 80:80
-    networks:
-      - icecast
+
 
   streamer-rus:
     image: ipiton/ezstream
@@ -24,9 +23,8 @@ services:
       - STREAM_GENRE=Russian Rock
       - STREAM_DESC=Air Radio Russian Stream
     depends_on:
-      - srv-cast
-    networks:
-      - icecast
+      - cast
+
 
   streamer-misc:
     image: ipiton/ezstream
@@ -42,11 +40,4 @@ services:
       - STREAM_GENRE=Misc
       - STREAM_DESC=Air Radio Misc Stream
     depends_on:
-      - srv-cast
-    networks:
-      - icecast
-
-
-networks:
-  icecast:
-    driver: bridge
+      - cast
