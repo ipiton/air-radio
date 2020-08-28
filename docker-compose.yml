@@ -1,27 +1,29 @@
 version: "3"
 
+
 services:
   cast:
-    image: ipiton/icecast
     build: ./front
+    image: ipiton/icecast
     container_name: cast
     ports:
       - 80:80
-
+    environment:
+      HOSTNAME: ${HOSTNAME}
 
   streamer-rus:
-    image: ipiton/ezstream
     build: ./back
+    image: ipiton/ezstream
     container_name: streamer-rus
     volumes:
       - /mnt/c/music:/music
     environment:
-      - PLAYLIST=/music/playlist.rus
-      - MOUNTPOINT=/air.rus
-      - STREAM_NAME=Air Radio RUS
-      - STREAM_URL=http://srv-cast.air.loc/air.rus
-      - STREAM_GENRE=Russian Rock
-      - STREAM_DESC=Air Radio Russian Stream
+      PLAYLIST: /music/playlist.rus
+      MOUNTPOINT: /air.rus
+      STREAM_NAME: Air Radio RUS
+      STREAM_URL: http://${HOSTNAME}/air.rus
+      STREAM_GENRE: Russian Rock
+      STREAM_DESC: Air Radio Russian Stream
     depends_on:
       - cast
 
@@ -33,11 +35,11 @@ services:
     volumes:
       - /mnt/c/music:/music
     environment:
-      - PLAYLIST=/music/playlist.misc
-      - MOUNTPOINT=/air.misc
-      - STREAM_NAME=Air Radio Misc
-      - STREAM_URL=http://srv-cast.air.loc/air.misc
-      - STREAM_GENRE=Misc
-      - STREAM_DESC=Air Radio Misc Stream
+      PLAYLIST: /music/playlist.misc
+      MOUNTPOINT: /air.misc
+      STREAM_NAME: Air Radio Misc
+      STREAM_URL: http://${HOSTNAME}/air.misc
+      STREAM_GENRE: Misc
+      STREAM_DESC: Air Radio Misc Stream
     depends_on:
       - cast
