@@ -1,5 +1,4 @@
-version: "3"
-
+version: "3.7"
 
 services:
   cast:
@@ -16,7 +15,11 @@ services:
     image: ipiton/ezstream
     container_name: streamer-rus
     volumes:
-      - /mnt/c/music:/music
+      - type: volume
+        source: muisc-server
+        target: /music
+        volume:
+          nocopy: true
     environment:
       PLAYLIST: /music/playlist.rus
       MOUNTPOINT: /air.rus
@@ -33,7 +36,11 @@ services:
     build: ./back
     container_name: streamer-misc
     volumes:
-      - /mnt/c/music:/music
+      - type: volume
+        source: muisc-server
+        target: /music
+        volume:
+          nocopy: true
     environment:
       PLAYLIST: /music/playlist.misc
       MOUNTPOINT: /air.misc
@@ -43,3 +50,11 @@ services:
       STREAM_DESC: Air Radio Misc Stream
     depends_on:
       - cast
+
+
+volumes:
+  muisc-server:
+    driver_opts:
+      type: "nfs"
+      o: "addr=nextcloud,nolock,soft,rw"
+      device: ":/data/vit/files/Music"

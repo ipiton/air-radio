@@ -1,0 +1,15 @@
+image: tmaier/docker-compose:19.03
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+  - docker-compose --version
+
+build image:
+  stage: deploy
+  script:
+    - docker-compose up -d --build
+  tags:
+    - docker
